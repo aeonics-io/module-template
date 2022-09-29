@@ -27,28 +27,28 @@ public class SampleEgress extends Item.Abstract implements Egress
 	
 	public Data encode()
 	{
-		return super.encode().put("key", key());
+		return super.encode().put("path", path());
 	}
 	
 	public void decode(Data value)
 	{
 		super.decode(value);
-		if( value.containsKey("key") ) key(value.asString("key"));
+		if( value.containsKey("path") ) path(value.asString("path"));
 	}
 	
 	public void update(Data value)
 	{
 		super.update(value);
-		if( value.containsKey("key") ) key(value.asString("key"));
+		if( value.containsKey("path") ) path(value.asString("path"));
 	}
 	
 	public Data documentation()
 	{
 		return super.documentation().encode()
-			.put("description", "Drops a message if the target property is not populated.")
-			.put("name", "Property Filter")
+			.put("description", "Writes the message content in a file.")
+			.put("name", "File Egress")
 			.put("parameters", Data.emptyMap()
-				.put("key", "The name of the property to check.")
+				.put("path", "The name of the property to check.")
 					);
 	}
 }

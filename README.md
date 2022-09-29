@@ -22,5 +22,19 @@ Then package your module as a jar file using `jar`, or any custom tool of your c
 jar -c --file=./template.jar -C ./bin/template .
 ```
 
-Then encrypt and digitally sign your jar file on the Aeonics portal.
-You can then deploy your module on your Aeonics instance.
+Then encrypt and digitally sign your jar file on the Aeonics portal, manually via the web interface or directly throught the REST API.
+
+```
+$ curl -X POST https://portal.aeonics.io/api/portal/generate/module \
+	-u user:pass \
+	-F "cert_id=42" \
+	-F "jar=@/path/to/jar.jar" > /path/to/module.module
+```
+
+You can then deploy your module on your Aeonics instance, manually via the web interface or directly throught the REST API.
+
+```
+$ curl -X POST http://localhost/api/admin/module/upsert \
+	-u admin:pass \
+	-F "archive=@/path/to/module.module"
+```
