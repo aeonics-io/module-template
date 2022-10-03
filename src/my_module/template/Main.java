@@ -6,7 +6,9 @@ import aeonics.system.*;
 import aeonics.rest.*;
 import aeonics.event.Lifecycle;
 
-public class Main extends Module
+import java.util.*;
+
+public class Main extends aeonics.system.Module
 {
 	public List<String> dependency()
 	{

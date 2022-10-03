@@ -16,21 +16,19 @@ public class SampleIngress extends BasicIngress
 	public int delay() { return delay; }
 	public void delay(int value) { delay = value; }
 	
-	public void run()
+	public Message get()
 	{
 		try
 		{
-			while( !Thread.currentThread().isInterrupted() )
-			{
-				Data config = Data.emptyMap().put("random", SecureRandom.getInstanceStrong().nextInt());
-				Message message = Factory.of(Message.class).produce(Message.class, config);
-				publish(message);
-				Thread.sleep(delay() * 1000);
-			}
+			Data config = Data.emptyMap().put("random", SecureRandom.getInstanceStrong().nextInt());
+			Message message = Factory.of(Message.class).produce(Message.class, config);
+			Thread.sleep(delay() * 1000);
+			return message;
 		}
 		catch(Exception e)
 		{
 			Logger.log(Logger.WARNING, getClass(), e);
+			return null;
 		}
 	}
 	
@@ -51,13 +49,13 @@ public class SampleIngress extends BasicIngress
 	
 	public void decode(Data value)
 	{
-		super.decode();
+		super.decode(value);
 		if( value.containsKey("delay") ) delay(value.asInt("delay"));
 	}
 	
 	public void update(Data value)
 	{
-		super.update();
+		super.update(value);
 		if( value.containsKey("delay") ) delay(value.asInt("delay"));
 	}
 }

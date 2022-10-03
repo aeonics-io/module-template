@@ -1,4 +1,4 @@
-module template
+module my_module
 {
 	requires aeonics.sdk;
 	

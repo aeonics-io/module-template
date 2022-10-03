@@ -13,7 +13,7 @@ There are no other dependencies, no `mvn`, no `gradle`, no `npm` of any sort is 
 Use the regular `javac` command, or any custom tool of your choice.
 
 ```
-javac -d ./bin -p . --module-source-path ./src --module template
+javac -d ./bin -p . --module-source-path ./src --module my_module
 ```
 
 Then package your module as a jar file using `jar`, or any custom tool of your choice.

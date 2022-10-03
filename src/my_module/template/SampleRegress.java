@@ -16,7 +16,7 @@ public class SampleRegress extends Item.Abstract implements Regress
 	{
 		if( !message.contains(key()) )
 			throw new Drop("The message did not contain the property " + key());
-		if( message.content().isBlank(key()) )
+		if( message.content().isEmpty(key()) )
 			throw new Drop("The message property " + key() + " is null or empty");
 		
 		// let other regress handlers process this message
