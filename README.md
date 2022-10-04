@@ -19,7 +19,7 @@ javac -d ./bin -p . --module-source-path ./src --module my_module
 Then package your module as a jar file using `jar`, or any custom tool of your choice.
 
 ```
-jar -c --file=./template.jar -C ./bin/template .
+jar -c --file=./my_module.jar -C ./bin/my_module .
 ```
 
 Then encrypt and digitally sign your jar file on the Aeonics portal, manually via the web interface or directly throught the REST API.
